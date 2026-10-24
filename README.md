@@ -1,6 +1,12 @@
-# Computer Networks Lab — Assessment 2
+# Airport Communication Network
 
-## Airport Communication Network
+## Team members
+
+- **ARIKTA DAS** - 24BCE2303
+- **KHUSHI VERMA** - 24BCE2269
+- **RITAMVARAA SINHA** - 22BDS0320
+
+## Description 
 
 An interactive, browser-based model of an airport communication network. The
 project demonstrates how operational departments can be connected through a
@@ -138,9 +144,3 @@ used when they are unavailable.
 ├── README.md
 └── serve.py
 ```
-
-## Group members
-
-- **ARIKTA DAS** — 24BCE2303
-- **KHUSHI VERMA** — 24BCE2269
-- **RITAMVARAA SINHA** — 22BDS0320
