@@ -131,12 +131,85 @@ used when they are unavailable.
 7. Trigger the Layer 2 security controls and review their illustrative log
    messages.
 
+## Screenshots
+
+The following figures show the simulator states in sequence:
+
+### Figure 1: Initial state
+
+OSPF adjacencies are full, R1 is the active gateway and the log shows the
+ready message.
+
+![Figure 1: Initial state. OSPF adjacencies are full, R1 is the active gateway and the log shows the ready message.](screenshots/01-initial-state.png)
+
+### Figure 2: Permitted data test
+
+Admin to ATC follows ADM > CORE > R1 > ATC with cost 12 and the path
+highlighted.
+
+![Figure 2: Permitted data test. Admin to ATC follows ADM > CORE > R1 > ATC with cost 12 and the path highlighted.](screenshots/02-permitted-admin-to-atc.png)
+
+### Figure 3: Policy denial
+
+Security to ATC is blocked by the access rules and the denial is logged.
+
+![Figure 3: Policy denial. Security to ATC is blocked by the access rules and the denial is logged.](screenshots/03-security-atc-denied.png)
+
+### Figure 4: Policy edit
+
+After the SEC>ATC cell is flipped to permit, the same test succeeds with cost
+2.
+
+![Figure 4: Policy edit. After the SEC>ATC cell is flipped to permit, the same test succeeds with cost 2.](screenshots/04-security-atc-permitted.png)
+
+### Figure 5: Gateway failover
+
+R1 is off, R2 becomes the active gateway and the path moves to R2.
+
+![Figure 5: Gateway failover. R1 is off, R2 becomes the active gateway and the path moves to R2.](screenshots/05-gateway-failover-to-r2.png)
+
+### Figure 6: Total gateway failure
+
+R1 and R2 are both off, no gateway is active and ATC is unreachable.
+
+![Figure 6: Total gateway failure. R1 and R2 are both off, no gateway is active and ATC is unreachable.](screenshots/06-total-gateway-failure.png)
+
+### Figure 7: Link failure
+
+The TB - WIFI link is cut and the Guest Wi-Fi to Internet test is
+unreachable.
+
+![Figure 7: Link failure. The TB - WIFI link is cut and the Guest Wi-Fi to Internet test is unreachable.](screenshots/07-guest-wifi-link-failure.png)
+
+### Figure 8: VoIP call test
+
+Check-in extension 1001 reaches ATC extension 3001 with cost 22.
+
+![Figure 8: VoIP call test. Check-in extension 1001 reaches ATC extension 3001 with cost 22.](screenshots/08-voip-check-in-to-atc.png)
+
+### Figure 9: Layer 2 security examples
+
+Port-security, DHCP-snooping and ARP-inspection messages in the syslog
+console.
+
+![Figure 9: Layer 2 security examples. Port-security, DHCP-snooping and ARP-inspection messages in the syslog console.](screenshots/09-layer-2-security-events.png)
+
 ## Project structure
 
 ```text
 .
 ├── .vscode/
 │   └── launch.json
+├── screenshots/
+│   ├── 01-initial-state.png
+│   ├── 02-permitted-admin-to-atc.png
+│   ├── 03-security-atc-denied.png
+│   ├── 04-security-atc-permitted.png
+│   ├── 05-gateway-failover-to-r2.png
+│   ├── 06-total-gateway-failure.png
+│   ├── 07-guest-wifi-link-failure.png
+│   ├── 08-voip-check-in-to-atc.png
+│   └── 09-layer-2-security-events.png
 ├── static/
 │   ├── app.js
 │   └── style.css
