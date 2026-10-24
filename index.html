@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Airport Communication Network</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0V8zM12 17v4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="miter"/></symbol>
+  <symbol id="i-arp" viewBox="0 0 24 24"><path d="M4 8h14m-4-4l4 4-4 4M20 16H6m4-4l-4 4 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M5 12a7 7 0 1 0 2-5M5 4v4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"/></symbol>
+</svg>
+
+<header class="mast">
+  <h1>Airport Communication Network</h1>
+  <p class="mast-note">Seven zones, one segmented backbone. Cut a link, kill a router, change a rule, and watch the network respond.</p>
+</header>
+
+<main class="grid">
+  <section class="map-col" aria-labelledby="t-topo">
+    <h2 id="t-topo">Topology</h2>
+    <svg id="map" viewBox="0 0 780 470" role="group" aria-label="Network topology"></svg>
+    <p class="caption">Click a link to cut it. Click R1 or R2 to power it off. Highlighted path shows the last test.</p>
+    <dl class="stats" id="stats"></dl>
+  </section>
+
+  <div class="side-col">
+    <section aria-labelledby="t-test">
+      <h2 id="t-test">Connectivity test</h2>
+      <div class="controls">
+        <label>Traffic<select id="mode"><option value="data">Data ping</option><option value="voice">VoIP call</option></select></label>
+        <label>From<select id="src"></select></label>
+        <label>To<select id="dst"></select></label>
+        <button class="btn solid" id="run" type="button">Run test</button>
+      </div>
+      <div id="res" class="result" aria-live="polite">Choose a source and destination.</div>
+      <dl class="ext" id="ext"></dl>
+    </section>
+
+    <section aria-labelledby="t-acl">
+      <h2 id="t-acl">Access rules</h2>
+      <div class="acl-wrap" id="acl"></div>
+      <p class="caption">Rows are sources, columns are destinations. Select a cell to flip it.</p>
+    </section>
+  </div>
+
+  <section class="lab" aria-labelledby="t-lab">
+    <div class="lab-ctl">
+      <h2 id="t-lab">Layer 2 security</h2>
+      <button class="btn" data-sec="ps" type="button"><svg class="ic"><use href="#i-plug"/></svg>Unknown laptop at Check-in</button>
+      <button class="btn" data-sec="dhcp" type="button"><svg class="ic"><use href="#i-shield"/></svg>Rogue DHCP on Security</button>
+      <button class="btn" data-sec="arp" type="button"><svg class="ic"><use href="#i-arp"/></svg>ARP spoof on ATC</button>
+      <button class="btn" data-sec="reset" type="button"><svg class="ic"><use href="#i-reset"/></svg>Reset ports</button>
+    </div>
+    <pre id="log" tabindex="0" aria-live="polite" aria-label="Syslog"></pre>
+  </section>
+</main>
+
+<footer class="foot">Arikta Das (24BCE2303), Khushi Verma (24BCE2269), Ritamvaraa Sinha (22BDS0320). Computer Networks Lab, Assessment 2.</footer>
+<script src="static/app.js"></script>
+</body>
+</html>
